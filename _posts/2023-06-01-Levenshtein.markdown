@@ -2,7 +2,7 @@
 title: "Levenshtein Distance for Name Generation"
 layout: post
 date: 2023-06-01 22:48
-image: /assets/images/blockchain-linguistics.jpg
+image: /assets/images/blockchain-linguistics.png
 headerImage: false
 tag:
 - markdown
@@ -10,7 +10,7 @@ tag:
 - extra
 category: blog
 author: decimalMath
-description: Post generated derived from a conversation with ChatGPT4
+description: Exploring Levenshtein Distance for name generation on Blockchains
 ---
 
 # Levenshtein Distance for Name Generation
