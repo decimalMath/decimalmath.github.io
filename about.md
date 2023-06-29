@@ -1,6 +1,8 @@
 ---
 title: About
 layout: page
+image: /assets/images/logo.jpeg
+description: 
 ---
 ## Welcome to DecimalMath 👋
 
