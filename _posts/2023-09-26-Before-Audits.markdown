@@ -9,7 +9,7 @@ tag:
 - workflow
 category: blog
 author: decimalMath
-description: Bridging the Gap: Enhancing Code Quality for Blockchain Audits
+description: "Bridging the Gap: Enhancing Code Quality for Blockchain Audits"
 ---
 
 # Bridging the Gap: Enhancing Code Quality for Blockchain Audits
