@@ -122,3 +122,5 @@ exclude:
     "FAQ.md",
     "vendor",
   ]
+
+privacyApps: true
