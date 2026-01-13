@@ -1,5 +1,617 @@
 ---
-layout: page
+layout: default
 title: Home
-description: 
+description: Swiss AI Innovation from Geneva — LLMs, On-Device AI, Privacy-First Technologies
 ---
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&display=swap');
+
+:root {
+  --swiss-red: #FF0000;
+  --swiss-red-soft: #E63946;
+  --alpine-white: #F1FAEE;
+  --glacier-blue: #A8DADC;
+  --deep-blue: #457B9D;
+  --midnight: #0a0a0f;
+  --snow: #ffffff;
+  --mist: rgba(255, 255, 255, 0.08);
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+}
+
+.landing-wrapper {
+  min-height: 100vh;
+  background: var(--midnight);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Alpine gradient background */
+.landing-wrapper::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(69, 123, 157, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(230, 57, 70, 0.08) 0%, transparent 40%),
+    radial-gradient(ellipse 50% 30% at 0% 100%, rgba(168, 218, 220, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, #0a0a0f 0%, #0d1117 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Subtle grid pattern */
+.landing-wrapper::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.landing-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.swiss-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  background: var(--mist);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  margin-bottom: 3rem;
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.swiss-cross {
+  width: 18px;
+  height: 18px;
+  position: relative;
+}
+
+.swiss-cross::before,
+.swiss-cross::after {
+  content: '';
+  position: absolute;
+  background: var(--swiss-red);
+  border-radius: 1px;
+}
+
+.swiss-cross::before {
+  width: 100%;
+  height: 36%;
+  top: 32%;
+  left: 0;
+}
+
+.swiss-cross::after {
+  width: 36%;
+  height: 100%;
+  left: 32%;
+  top: 0;
+}
+
+.swiss-badge span {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 400;
+  color: var(--snow);
+  margin: 0 0 1.5rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  animation: fadeInUp 0.8s ease-out 0.1s both;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--swiss-red-soft);
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.btn {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--snow);
+  color: var(--midnight);
+}
+
+.btn-primary:hover {
+  background: var(--alpine-white);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--snow);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+  background: var(--mist);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.scroll-indicator span {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 100%);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* Capabilities Section */
+.capabilities {
+  padding: 8rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--swiss-red-soft);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  color: var(--snow);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.capability-card {
+  background: var(--mist);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.capability-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.capability-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.capability-card:hover::before {
+  opacity: 1;
+}
+
+.capability-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.capability-card h3 {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--snow);
+  margin: 0 0 1rem;
+}
+
+.capability-card p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Trust Section */
+.trust {
+  padding: 6rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  text-align: center;
+}
+
+.trust-item h4 {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 400;
+  color: var(--snow);
+  margin: 0 0 0.5rem;
+}
+
+.trust-item p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Philosophy Section */
+.philosophy {
+  padding: 8rem 0;
+}
+
+.philosophy-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.philosophy-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--snow);
+  line-height: 1.5;
+  margin: 0 0 2rem;
+}
+
+.philosophy-attribution {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Location Section */
+.location {
+  padding: 6rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.location-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .location-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.location-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  color: var(--snow);
+  margin: 0 0 1.5rem;
+}
+
+.location-text p {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.location-visual {
+  position: relative;
+  height: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: 
+    linear-gradient(135deg, var(--deep-blue) 0%, var(--midnight) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-visual::before {
+  content: '🏔️';
+  font-size: 6rem;
+  opacity: 0.8;
+}
+
+/* Footer CTA */
+.footer-cta {
+  padding: 8rem 0;
+  text-align: center;
+}
+
+.footer-cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  color: var(--snow);
+  margin: 0 0 1.5rem;
+}
+
+.footer-cta p {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 2.5rem;
+}
+
+.contact-link {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--swiss-red-soft);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+  color: var(--snow);
+  gap: 1rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.2);
+  }
+}
+
+/* Override site defaults */
+.home {
+  margin-top: 0 !important;
+}
+
+.header-home {
+  display: none !important;
+}
+</style>
+
+<div class="landing-wrapper">
+  <div class="landing-content">
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="swiss-badge">
+        <div class="swiss-cross"></div>
+        <span>Geneva, Switzerland</span>
+      </div>
+      
+      <h1 class="hero-title">Building the <em>future</em><br>of AI</h1>
+      
+      <p class="hero-subtitle">
+        We craft intelligent systems with Swiss precision. From large language models to on-device inference, privacy is our foundation.
+      </p>
+      
+      <div class="hero-cta">
+        <a href="#capabilities" class="btn btn-primary">Explore Our Work</a>
+        <a href="mailto:decimalMath@proton.me" class="btn btn-secondary">Get in Touch</a>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- Capabilities Section -->
+    <section class="capabilities" id="capabilities">
+      <div class="section-header">
+        <span class="section-label">What We Do</span>
+        <h2 class="section-title">AI Excellence, Swiss Quality</h2>
+      </div>
+      
+      <div class="capabilities-grid">
+        <div class="capability-card">
+          <div class="capability-icon">🧠</div>
+          <h3>Large Language Models</h3>
+          <p>Custom LLM development, fine-tuning, and deployment. We build models that understand your domain and speak your language.</p>
+        </div>
+        
+        <div class="capability-card">
+          <div class="capability-icon">⚡</div>
+          <h3>Model Training</h3>
+          <p>End-to-end training pipelines with optimized infrastructure. From data curation to production-ready models.</p>
+        </div>
+        
+        <div class="capability-card">
+          <div class="capability-icon">📱</div>
+          <h3>On-Device AI</h3>
+          <p>Bring intelligence to the edge. Optimized models for mobile and embedded systems without cloud dependency.</p>
+        </div>
+        
+        <div class="capability-card">
+          <div class="capability-icon">🔒</div>
+          <h3>Privacy-First</h3>
+          <p>Your data stays yours. We design systems with privacy at the core—not as an afterthought.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="trust">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <h4>100%</h4>
+          <p>Privacy Focused</p>
+        </div>
+        <div class="trust-item">
+          <h4>Swiss</h4>
+          <p>Data Protection</p>
+        </div>
+        <div class="trust-item">
+          <h4>Edge</h4>
+          <p>First Approach</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section class="philosophy">
+      <div class="philosophy-content">
+        <p class="philosophy-quote">
+          "Intelligence should empower, not surveil. We build AI that respects the humans it serves."
+        </p>
+        <p class="philosophy-attribution">— Our Core Belief</p>
+      </div>
+    </section>
+
+    <!-- Location -->
+    <section class="location">
+      <div class="location-content">
+        <div class="location-text">
+          <h2>Rooted in Geneva</h2>
+          <p>
+            From the shores of Lake Léman, we're building the next generation of AI technology. Switzerland's tradition of precision, neutrality, and privacy isn't just our backdrop—it's embedded in everything we create.
+          </p>
+        </div>
+        <div class="location-visual"></div>
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+      <h2>Ready to build something amazing?</h2>
+      <p>Let's discuss how AI can transform your vision.</p>
+      <a href="mailto:decimalMath@proton.me" class="contact-link">
+        decimalMath@proton.me 
+        <span>→</span>
+      </a>
+    </section>
+
+  </div>
+</div>
